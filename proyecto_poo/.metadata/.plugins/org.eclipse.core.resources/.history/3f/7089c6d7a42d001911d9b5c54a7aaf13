@@ -1,0 +1,29 @@
+package windows;
+
+import res.Values;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javafx.scene.layout.AnchorPane;
+
+public class PrincipalGame extends Application{
+	
+	private AnchorPane root;
+	
+	public PrincipalGame() {
+		root = new AnchorPane();
+	}
+	
+	@Override
+	public void start(Stage stage) {
+		
+		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
+		stage.setScene(scene);
+		stage.setTitle(Values.TITLE_GAME);
+		stage.centerOnScreen();
+		stage.show();
+	}
+
+}

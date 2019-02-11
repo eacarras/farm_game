@@ -1,0 +1,17 @@
+package frutas;
+
+import javafx.scene.layout.HBox;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class Fruits {
+	
+	public static HBox getFruits() {
+		HBox hfruits = new HBox();
+		hfruits.setSpacing(10.0);
+		
+		return hfruits;
+	}
+	
+}

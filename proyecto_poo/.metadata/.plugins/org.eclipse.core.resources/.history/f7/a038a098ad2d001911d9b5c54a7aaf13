@@ -1,0 +1,14 @@
+package classes;
+
+public class Fruta {
+	
+	private String name;
+	private int time;
+	private int pvp;
+	
+	public Fruta(String name, int time, int pvp) {
+		this.name = name;
+		this.time = time;
+		this.pvp = pvp;
+	}
+}

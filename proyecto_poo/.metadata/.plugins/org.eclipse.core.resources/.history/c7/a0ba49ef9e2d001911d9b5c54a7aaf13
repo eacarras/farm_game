@@ -1,0 +1,61 @@
+package windows;
+
+import res.Values;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.control.Button;
+
+public class HomeActivity extends Application{
+	
+	private AnchorPane root;
+	
+	private HBox hbuttons;
+	private Button bnew;
+	private Button bexit;
+	
+	private void Home() {
+		root = new AnchorPane();
+		
+		hbuttons = new HBox();
+		bnew = new Button("Nuevo Juego");
+		bexit = new Button("Salir");
+		manage_hbox();
+	}
+	
+	private void configure_buttons(Stage stage) {
+		bnew.setOnAction(e -> System.out.println("Nuevo juego"));
+		
+		bexit.setOnAction(e -> stage.close());
+	}
+	
+	@Override
+	public void start(Stage stage) {
+		Home();
+		configure_buttons(stage);
+		
+		Scene scene = new Scene(root, 700.0, 400.0);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+	}
+	
+	private void manage_hbox() {
+		hbuttons.getChildren().addAll(bnew, bexit);
+		hbuttons.setSpacing(Values.SPACING_BUTTON_LOGIN);
+		
+		root.getChildren().add(hbuttons);
+		AnchorPane.setLeftAnchor(hbuttons, 10.0);
+		AnchorPane.setBottomAnchor(hbuttons, 40.0);
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

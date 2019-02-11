@@ -1,0 +1,68 @@
+package windows;
+
+import res.Methods;
+import res.Values;
+
+import frutas.Fruits;
+
+import classes.F_V;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+
+import javafx.scene.control.Label;
+
+public class PrincipalGame extends Application{
+	
+	private AnchorPane root;
+	private Label luser;
+	
+	private Label loptions;
+	
+	private final HashMap<String, List<F_V>> map = Methods.getMap();
+	private final HBox frutas = Fruits.getFruits();
+	
+	private ImageView background;
+	
+	public PrincipalGame(String user) {
+		root = new AnchorPane();
+		
+		luser = new Label(user);
+		AnchorPane.setLeftAnchor(luser, 10.0);
+		AnchorPane.setTopAnchor(luser, 10.0);
+		
+		loptions = new Label("Seleccione el cultivo que desee sembrar:");
+		AnchorPane.setLeftAnchor(loptions, 10.0);
+		AnchorPane.setTopAnchor(loptions, 495.0);
+		
+		AnchorPane.setLeftAnchor(frutas, 10.0);
+		AnchorPane.setTopAnchor(frutas, 500.0);
+		frutas.setVisible(false);
+		root.getChildren().add(frutas);
+		
+		background = new ImageView(new Image("file:src/res/fondo_granja.jpg"));
+	}
+	
+	@Override
+	public void start(Stage stage) {
+		
+		root.getChildren().addAll(luser, background, loptions);
+		
+		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
+		stage.setScene(scene);
+		stage.setTitle(Values.TITLE_GAME);
+		stage.centerOnScreen();
+		stage.show();
+	}
+
+}

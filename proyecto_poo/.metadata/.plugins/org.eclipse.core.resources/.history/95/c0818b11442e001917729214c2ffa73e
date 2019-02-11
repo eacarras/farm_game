@@ -1,0 +1,36 @@
+package frutas;
+
+import javafx.scene.layout.HBox;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class Fruits {
+	
+	private static final String[] paths= {"file:src/frutas/durazno.png", "file:src/frutas/manzana.png"};
+	
+	public static HBox getFruits() {
+		HBox hfruits = new HBox();
+		hfruits.setSpacing(10.0);
+		
+		for (String path: paths) {
+			switch(path) {
+				case "file:src/frutas/durazno.png":
+					ImageView imagedurazno = new ImageView(new Image(path));
+					// TODO: Add size to the images
+					hfruits.getChildren().add(imagedurazno);
+					break;
+				case "file:src/frutas/manzana.png":
+					ImageView imagemanzana = new ImageView(new Image(path));
+					// TODO: Add size to the images
+					hfruits.getChildren().add(imagemanzano);
+					break;
+				default:
+					break;
+			}
+		}
+		
+		return hfruits;
+	}
+	
+}

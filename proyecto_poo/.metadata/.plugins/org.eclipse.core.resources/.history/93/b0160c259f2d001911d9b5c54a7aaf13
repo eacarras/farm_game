@@ -1,0 +1,10 @@
+package res;
+
+public class Values {
+	
+	public final static double SPACING_BUTTON_LOGIN = 250.0;
+	public final static double WIDTH_LOGIN = 700.0;
+	public final static double HEIGTH_LOGIN = 400.0;
+	
+	public final static String TITLE_LOGIN = "Pagina Principal";
+}

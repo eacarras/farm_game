@@ -1,0 +1,42 @@
+package windows;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.control.Button;
+
+public class HomeActivity extends Application{
+	
+	private AnchorPane root;
+	
+	private HBox hbuttons;
+	private Button bnew;
+	private Button bexit;
+	
+	private void HomeActivity() {
+		root = new AnchorPane();
+		
+		hbuttons = new HBox();
+		bnew = new Button("Nuevo Juego");
+		bexit = new Button("Salir");
+	}
+	
+	@Override
+	public void start(Stage stage) {
+		HomeActivity();
+		
+		Scene scene = new Scene(root, 500.0, 500.0);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
