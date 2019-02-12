@@ -6,7 +6,7 @@ public class Values {
 	public final static double SPACING_INFO_LOGIN = 10.0;
 	public final static double WIDTH_LOGIN = 900.0;
 	public final static double HEIGTH_LOGIN = 600.0;
-	public final static double WIDTH_GAME = 850.0;
+	public final static double WIDTH_GAME = 900.0;
 	public final static double HEIGTH_GAME = 600.0;
 	
 	public final static String PRINCIPAL_TITLE = "Bienvenido Al Mejor Juego De Todos..!";

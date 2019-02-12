@@ -16,7 +16,7 @@ public class Methods {
 	
 	private static final String path = "src/res/cultivos.txt";
 	
-	private static final String[] descripciones = {"Monedas", "Pedidos completados"};
+	private static final String[] array = {"Monedas", "Pedidos completados"};
 	
 	public static HashMap<String, List<F_V>> getMap() {
 		HashMap<String, List<F_V>> map = new HashMap<>();
@@ -49,9 +49,6 @@ public class Methods {
 	}
 	
 	public static List<TableData> getListValues() {
-		List<TableData> array = new ArrayList<>();
-		for(String value: descripciones)
-			array.add(new TableData(value, "0"));
-		return array;
+		List<TableData> array = new ArrayList<>(); 
 	}
 }

@@ -39,7 +39,6 @@ public class PrincipalGame extends Application{
 	private Label loptions;
 	
 	private final HashMap<String, List<F_V>> map = Methods.getMap();
-	private final List<TableData> list = Methods.getListValues();
 	
 	private final HBox frutas = Fruits.getFruits();
 	private final HBox granos = Granos.getGranos();
@@ -91,12 +90,12 @@ public class PrincipalGame extends Application{
 	private void create_table() {
 		try {
 			TableView<TableData> tabla = new TableView<>();
-			AnchorPane.setTopAnchor(tabla, 5.0);
-			AnchorPane.setLeftAnchor(tabla, 630.0);
+			AnchorPane.setTopAnchor(tabla, 50.0);
+			AnchorPane.setLeftAnchor(tabla, 10.0);
 			
 			tabla.setEditable(false);
-			tabla.setPrefHeight(80.0);
-			tabla.setPrefWidth(210.0);
+			tabla.setMaxWidth(800.0);
+			tabla.setPrefWidth(500.0);
 			
 			TableColumn<TableData, String> name = new TableColumn<>("Descripcion");
 	        TableColumn<TableData, String> fecha = new TableColumn<>("Data");	     
@@ -105,11 +104,6 @@ public class PrincipalGame extends Application{
 	        
 	        name.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
 	        fecha.setCellValueFactory(new PropertyValueFactory<>("data"));
-	        
-	        for(TableData data: list)
-	        	tabla.getItems().add(data);
-	        
-	        root.getChildren().add(tabla);
 		} catch(Exception e) {
 			Logger.getLogger("Table").log(Level.SEVERE, null, e);
 		}

@@ -64,7 +64,7 @@ public class PrincipalGame extends Application{
 		
 		background = new ImageView(new Image("file:src/res/fondo_granja.jpg"));
 		
-		create_table();
+		//create_table();
 	}
 	
 	@Override
@@ -95,8 +95,8 @@ public class PrincipalGame extends Application{
 			AnchorPane.setLeftAnchor(tabla, 630.0);
 			
 			tabla.setEditable(false);
-			tabla.setPrefHeight(80.0);
-			tabla.setPrefWidth(210.0);
+			tabla.setMaxWidth(800.0);
+			tabla.setPrefWidth(500.0);
 			
 			TableColumn<TableData, String> name = new TableColumn<>("Descripcion");
 	        TableColumn<TableData, String> fecha = new TableColumn<>("Data");	     
@@ -108,8 +108,6 @@ public class PrincipalGame extends Application{
 	        
 	        for(TableData data: list)
 	        	tabla.getItems().add(data);
-	        
-	        root.getChildren().add(tabla);
 		} catch(Exception e) {
 			Logger.getLogger("Table").log(Level.SEVERE, null, e);
 		}

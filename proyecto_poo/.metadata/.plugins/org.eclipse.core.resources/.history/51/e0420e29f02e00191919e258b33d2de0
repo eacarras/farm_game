@@ -95,8 +95,8 @@ public class PrincipalGame extends Application{
 			AnchorPane.setLeftAnchor(tabla, 630.0);
 			
 			tabla.setEditable(false);
-			tabla.setPrefHeight(80.0);
-			tabla.setPrefWidth(210.0);
+			tabla.setMaxWidth(800.0);
+			tabla.setPrefWidth(300.0);
 			
 			TableColumn<TableData, String> name = new TableColumn<>("Descripcion");
 	        TableColumn<TableData, String> fecha = new TableColumn<>("Data");	     

@@ -96,7 +96,7 @@ public class PrincipalGame extends Application{
 			
 			tabla.setEditable(false);
 			tabla.setPrefHeight(80.0);
-			tabla.setPrefWidth(210.0);
+			tabla.setPrefWidth(225.0);
 			
 			TableColumn<TableData, String> name = new TableColumn<>("Descripcion");
 	        TableColumn<TableData, String> fecha = new TableColumn<>("Data");	     

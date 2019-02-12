@@ -10,13 +10,10 @@ import java.util.List;
 import java.io.File;
 
 import classes.F_V;
-import classes.TableData;
 
 public class Methods {
 	
 	private static final String path = "src/res/cultivos.txt";
-	
-	private static final String[] descripciones = {"Monedas", "Pedidos completados"};
 	
 	public static HashMap<String, List<F_V>> getMap() {
 		HashMap<String, List<F_V>> map = new HashMap<>();
@@ -46,12 +43,5 @@ public class Methods {
 		}
 		
 		return map;
-	}
-	
-	public static List<TableData> getListValues() {
-		List<TableData> array = new ArrayList<>();
-		for(String value: descripciones)
-			array.add(new TableData(value, "0"));
-		return array;
 	}
 }
