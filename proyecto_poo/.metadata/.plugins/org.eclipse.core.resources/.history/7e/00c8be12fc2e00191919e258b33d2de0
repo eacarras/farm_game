@@ -1,0 +1,16 @@
+package classes;
+
+import java.util.List;
+
+public class ClusterPedido {
+	 
+	private String numero_pedido;
+	private List<String> pedidos;
+	private String recompensa;
+	
+	public ClusterPedido(String numero_pedido, List<String> pedidos, String recompensa) {
+		this.numero_pedido = numero_pedido;
+		this.pedidos = pedidos;
+		this.recompensa = recompensa;
+	}
+}

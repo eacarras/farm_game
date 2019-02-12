@@ -94,7 +94,7 @@ public class Methods {
 	public static Label getPedido(String numero_pedido) {
 		int numero_fruta;
 		int specific_number;
-		int recompensa_total = 0;
+		int recompensa_total;
 		List<String> list = new ArrayList<>();
 
 		for(int i = 0; i < Values.MAX_LENGTH; i ++) {
@@ -116,7 +116,6 @@ public class Methods {
 			}
 		}
 		
-		ClusterPedido cluster = new ClusterPedido(numero_pedido, list, String.valueOf(recompensa_total));
-		return cluster.getCluster();
+		ClusterPedido cluster = new ClusterPedido(numero_pedido, list, recompensa)
 	}
 }

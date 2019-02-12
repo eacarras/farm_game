@@ -53,10 +53,6 @@ public class PrincipalGame extends Application{
 		root = new AnchorPane();
 		setPedido(1);
 		
-		complete_pedido = new Button("Completar Pedido");
-		AnchorPane.setRightAnchor(complete_pedido, 10.0);
-		AnchorPane.setBottomAnchor(complete_pedido, 10.0);
-		
 		luser = new Label(user);
 		AnchorPane.setLeftAnchor(luser, 10.0);
 		AnchorPane.setTopAnchor(luser, 10.0);
@@ -72,13 +68,18 @@ public class PrincipalGame extends Application{
 		background = new ImageView(new Image("file:src/res/fondo_granja.jpg"));
 		
 		create_table();
-		create_pedido();
+		try {
+			create_pedido();			
+		} catch(Exception e) {
+			System.out.println("Error al cargar el pedido");
+		}
+
 	}
 	
 	@Override
 	public void start(Stage stage) {
 		
-		root.getChildren().addAll(luser, background, loptions, complete_pedido);
+		root.getChildren().addAll(luser, background, loptions);
 		
 		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
 		stage.setScene(scene);

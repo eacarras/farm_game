@@ -17,7 +17,7 @@ import classes.ClusterPedido;
 
 public class Methods {
 	
-	private static final HashMap<String, HashMap<String, String>> map = getMapWithPvp();
+	private final HashMap<String, List<F_V>> map = Methods.getMap();
 	
 	private static final String path = "src/res/cultivos.txt";
 	
@@ -57,33 +57,6 @@ public class Methods {
 		return map;
 	}
 	
-	public static HashMap<String, HashMap<String, String>> getMapWithPvp() {
-		HashMap<String, HashMap<String, String>> map = new HashMap<>();
-		HashMap<String, String> frutas = new HashMap<>();
-		HashMap<String, String> vegetales = new HashMap<>();
-		HashMap<String, String> grano = new HashMap<>();
-		
-		File file = new File(path);
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(file);
-			while(scanner.hasNextLine()){
-				String[] sp = scanner.nextLine().split("/");
-				if(sp[0].equals("fruta")) frutas.put(sp[1], sp[3]);
-				else if(sp[0].equals("vegetal")) vegetales.put(sp[1], sp[3]);
-				else grano.put(sp[1], sp[3]);
-            }
-			
-			map.put("frutas", frutas);
-			map.put("vegetales", vegetales);
-			map.put("granos", grano);
-		} catch(Exception e) {
-			Logger.getLogger("Methods").log(Level.SEVERE, null, e);
-		}
-		
-		return map;
-	}
-	
 	public static List<TableData> getListValues() {
 		List<TableData> array = new ArrayList<>();
 		for(String value: descripciones)
@@ -94,7 +67,6 @@ public class Methods {
 	public static Label getPedido(String numero_pedido) {
 		int numero_fruta;
 		int specific_number;
-		int recompensa_total = 0;
 		List<String> list = new ArrayList<>();
 
 		for(int i = 0; i < Values.MAX_LENGTH; i ++) {
@@ -102,13 +74,11 @@ public class Methods {
 			switch(fruits_vegetal_cereal[numero_fruta]) {
 				case "frutas":
 					specific_number = (int) (Math.random() * 3);
-					recompensa_total = recompensa_total + Integer.valueOf(map.get("frutas").get(fruits[specific_number]));
-					list.add(fruits_vegetal_cereal[numero_fruta] + "/" + fruits[specific_number]);
+					list.add(fruits_vegetal_cereal[numero_fruta] + "/" + fruits[numero_fruta]);
 					break;
 				case "vegetales":
 					specific_number = (int) (Math.random() * 3);
-					recompensa_total = recompensa_total + Integer.valueOf(map.get("vegetales").get(vegetal[specific_number]));
-					list.add(fruits_vegetal_cereal[numero_fruta] + "/" + vegetal[specific_number]);
+					list.add(fruits_vegetal_cereal[numero_fruta] + "/" + fruits[numero_fruta]);
 					break;
 				case "granos":
 					list.add(fruits_vegetal_cereal[numero_fruta] + "/" + "trigo");
@@ -116,7 +86,6 @@ public class Methods {
 			}
 		}
 		
-		ClusterPedido cluster = new ClusterPedido(numero_pedido, list, String.valueOf(recompensa_total));
-		return cluster.getCluster();
+		ClusterPedido cluster = new ClusterPedido(numero_pedido, list, recompensa)
 	}
 }

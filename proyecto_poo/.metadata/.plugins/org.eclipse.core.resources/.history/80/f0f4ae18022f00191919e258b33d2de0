@@ -28,7 +28,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 
 public class PrincipalGame extends Application{
 	
@@ -36,8 +35,7 @@ public class PrincipalGame extends Application{
 	private Label luser;
 	
 	private Label cluster;
-	private Button complete_pedido;
-	private int pedido;
+	private int pedido = 0;
 	
 	private Label loptions;
 	
@@ -51,11 +49,6 @@ public class PrincipalGame extends Application{
 	
 	public PrincipalGame(String user) {
 		root = new AnchorPane();
-		setPedido(1);
-		
-		complete_pedido = new Button("Completar Pedido");
-		AnchorPane.setRightAnchor(complete_pedido, 10.0);
-		AnchorPane.setBottomAnchor(complete_pedido, 10.0);
 		
 		luser = new Label(user);
 		AnchorPane.setLeftAnchor(luser, 10.0);
@@ -72,13 +65,12 @@ public class PrincipalGame extends Application{
 		background = new ImageView(new Image("file:src/res/fondo_granja.jpg"));
 		
 		create_table();
-		create_pedido();
 	}
 	
 	@Override
 	public void start(Stage stage) {
 		
-		root.getChildren().addAll(luser, background, loptions, complete_pedido);
+		root.getChildren().addAll(luser, background, loptions);
 		
 		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
 		stage.setScene(scene);
@@ -121,14 +113,6 @@ public class PrincipalGame extends Application{
 		} catch(Exception e) {
 			Logger.getLogger("Table").log(Level.SEVERE, null, e);
 		}
-	}
-	
-	private void create_pedido() {
-		cluster = Methods.getPedido(String.valueOf(pedido));
-		
-		root.getChildren().add(cluster);
-		AnchorPane.setLeftAnchor(cluster, 630.0);
-		AnchorPane.setTopAnchor(cluster, 125.0);
 	}
 	
 	private void setPedido(int pedido) {

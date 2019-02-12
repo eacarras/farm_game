@@ -78,7 +78,7 @@ public class PrincipalGame extends Application{
 	@Override
 	public void start(Stage stage) {
 		
-		root.getChildren().addAll(luser, background, loptions, complete_pedido);
+		root.getChildren().addAll(luser, background, loptions);
 		
 		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
 		stage.setScene(scene);

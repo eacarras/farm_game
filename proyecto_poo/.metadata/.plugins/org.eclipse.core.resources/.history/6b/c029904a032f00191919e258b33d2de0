@@ -21,11 +21,8 @@ public class ClusterPedido {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Pedido numero: " + numero_pedido + "\n");
 		for(String value: pedidos) {
-			String[] split = value.split("/");
-			int numero = (int) (Math.random() * 10);
-			if(numero <= 5) numero = 5;
-			else numero = 10;
-			sb.append(String.valueOf(numero) + " " + split[1] + "\n");
+			String[] sb = value.split("/")
+			sb.append(value + "\n");
 			
 		}
 			
