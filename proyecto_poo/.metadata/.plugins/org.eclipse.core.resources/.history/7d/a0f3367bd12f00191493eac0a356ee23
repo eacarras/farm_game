@@ -103,9 +103,9 @@ public class Methods {
 			scanner = new Scanner(file);
 			while(scanner.hasNextLine()){
 				String[] sp = scanner.nextLine().split("/");
-				if(sp[0].equals("fruta")) frutas.put(sp[1], sp[2]);
-				else if(sp[0].equals("vegetal")) vegetales.put(sp[1], sp[2]);
-				else grano.put(sp[1], sp[2]);
+				if(sp[0].equals("fruta")) frutas.put(sp[1], sp[3]);
+				else if(sp[0].equals("vegetal")) vegetales.put(sp[1], sp[3]);
+				else grano.put(sp[1], sp[3]);
             }
 			
 			map.put("frutas", frutas);

@@ -71,82 +71,37 @@ public class Vegetales {
 	private static void setButtonActions() {
 		imagebrocoli.setOnMouseClicked(e -> {
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando brocoli");
 				try {
-					int value = Integer.parseInt(map.get("vegetales").get("brocoli"));
+					int value = Integer.parseInt(map.get("frutas").get("durazno"));
 					Thread.sleep(value * 1000);
 				} catch(Exception exception){
 					System.out.println(exception.getMessage());
 				}
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagelechuga.setOnMouseClicked(e -> {
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando lechuga");
-				try {
-					int value = Integer.parseInt(map.get("vegetales").get("lechuga"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagepimiento.setOnMouseClicked(e -> {
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando pimiento");
-				try {
-					int value = Integer.parseInt(map.get("vegetales").get("pimiento"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagetomate.setOnMouseClicked(e -> {
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando tomate");
-				try {
-					int value = Integer.parseInt(map.get("vegetales").get("tomate"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 	}
 }

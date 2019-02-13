@@ -70,6 +70,11 @@ public class Fruits {
 	
 	private static void setButtonAction() {
 		imagedurazno.setOnMouseClicked(e -> {
+			if(parcela.isCosechar()) {
+				parcela.setCosechar(false);
+				System.out.println("Cosechado..");
+			} else System.out.println("Aun no listo para cosechar");
+			
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
 				parcela.setCosechar(false);
 				parcela.setOcupado(true);
@@ -83,13 +88,15 @@ public class Fruits {
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
 			
+			
+		});
+		
+		imagemanzana.setOnMouseClicked(e -> {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
 			} else System.out.println("Aun no listo para cosechar");
-		});
-		
-		imagemanzana.setOnMouseClicked(e -> {
+			
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
 				parcela.setCosechar(false);
 				parcela.setOcupado(true);
@@ -102,14 +109,14 @@ public class Fruits {
 				}
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
+		});
+		
+		imagenaranja.setOnMouseClicked(e -> {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
 			} else System.out.println("Aun no listo para cosechar");
-		});
-		
-		imagenaranja.setOnMouseClicked(e -> {
+			
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
 				parcela.setOcupado(true);
 				parcela.setCosechar(false);
@@ -122,14 +129,14 @@ public class Fruits {
 				}
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
+		});
+		
+		imagepera.setOnMouseClicked(e -> {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
 			} else System.out.println("Aun no listo para cosechar");
-		});
-		
-		imagepera.setOnMouseClicked(e -> {
+			
 			if(!parcela.isOcupado() || !parcela.isAvalible()) {
 				parcela.setOcupado(true);
 				parcela.setCosechar(false);
@@ -142,11 +149,6 @@ public class Fruits {
 				}
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 	}
 }

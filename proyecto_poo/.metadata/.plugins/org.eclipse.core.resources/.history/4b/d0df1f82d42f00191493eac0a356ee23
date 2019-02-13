@@ -164,10 +164,8 @@ public class PrincipalGame extends Application{
 	}
 	
 	private void create_pedido() {
-		List<Label> p = Methods.getPedido(String.valueOf(pedido));
-		
-		cluster = p.get(0);
-		diference = Integer.parseInt(p.get(1).getText());
+		cluster = Methods.getPedido(String.valueOf(pedido)).get(0);
+		diference = Integer.parseInt(Methods.getPedido(String.valueOf(pedido)).get(1).getText());
 		
 		root.getChildren().add(cluster);
 		AnchorPane.setLeftAnchor(cluster, 630.0);

@@ -61,10 +61,8 @@ public class Granos {
 				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
 			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
+			if(parcela.isCosechar()) System.out.println("Cosechando..");
+			else System.out.println("Aun no lista para cosechar");
 		});
 	}
 }

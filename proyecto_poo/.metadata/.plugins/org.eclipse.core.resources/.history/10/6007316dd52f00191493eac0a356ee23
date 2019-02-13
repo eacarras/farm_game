@@ -1,0 +1,32 @@
+package classes;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Pedido {
+	
+	private List<String> list;
+	
+	public Pedido() {
+		list = new ArrayList<>();
+	}
+
+	public List<String> getList() {
+		return list;
+	}
+
+	public void setList(List<String> list) {
+		this.list = list;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null) return false;
+		if(!(o instanceof Pedido)) return false;
+		Pedido p = (Pedido) o;
+		
+		if(p.getList().size() != this.list.size()) return false;
+		
+		
+	}
+}

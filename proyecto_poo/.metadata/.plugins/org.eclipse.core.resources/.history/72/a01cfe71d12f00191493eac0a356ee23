@@ -91,33 +91,6 @@ public class Methods {
 		return map;
 	}
 	
-	public static HashMap<String, HashMap<String, String>> getMapWithTime() {
-		HashMap<String, HashMap<String, String>> map = new HashMap<>();
-		HashMap<String, String> frutas = new HashMap<>();
-		HashMap<String, String> vegetales = new HashMap<>();
-		HashMap<String, String> grano = new HashMap<>();
-		
-		File file = new File(path);
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(file);
-			while(scanner.hasNextLine()){
-				String[] sp = scanner.nextLine().split("/");
-				if(sp[0].equals("fruta")) frutas.put(sp[1], sp[2]);
-				else if(sp[0].equals("vegetal")) vegetales.put(sp[1], sp[2]);
-				else grano.put(sp[1], sp[2]);
-            }
-			
-			map.put("frutas", frutas);
-			map.put("vegetales", vegetales);
-			map.put("granos", grano);
-		} catch(Exception e) {
-			Logger.getLogger("Methods").log(Level.SEVERE, null, e);
-		}
-		
-		return map;
-	}
-	
 	public static List<TableData> getListValues() {
 		List<TableData> array = new ArrayList<>();
 		for(String value: descripciones)

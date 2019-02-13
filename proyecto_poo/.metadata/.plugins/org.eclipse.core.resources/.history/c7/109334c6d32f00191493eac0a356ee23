@@ -84,9 +84,8 @@ public class Vegetales {
 			}else System.out.println("Parcela ocupada aun...");
 			
 			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
+				System.out.println("Cosechando..");
+			} else System.out.println("Aun no lista para cosechar..");
 		});
 		
 		imagelechuga.setOnMouseClicked(e -> {
@@ -104,9 +103,8 @@ public class Vegetales {
 			}else System.out.println("Parcela ocupada aun...");
 			
 			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
+				System.out.println("Cosechando..");
+			}else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagepimiento.setOnMouseClicked(e -> {
@@ -124,9 +122,8 @@ public class Vegetales {
 			}else System.out.println("Parcela ocupada aun...");
 			
 			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
+				System.out.println("Cosechando");
+			} else System.out.println("Aun no lista para cosechar");
 		});
 		
 		imagetomate.setOnMouseClicked(e -> {
@@ -144,9 +141,8 @@ public class Vegetales {
 			}else System.out.println("Parcela ocupada aun...");
 			
 			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
+				System.out.println("Cosechando..");
+			} else System.out.println("Aun no lista para cosechar");
 		});
 	}
 }

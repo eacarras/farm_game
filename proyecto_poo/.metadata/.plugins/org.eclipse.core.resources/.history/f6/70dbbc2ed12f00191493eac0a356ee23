@@ -3,9 +3,6 @@ package frutas;
 import javafx.scene.layout.HBox;
 
 import classes.Parcela;
-import res.Methods;
-
-import java.util.HashMap;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,8 +11,6 @@ public class Fruits {
 	
 	private static final String[] paths= {"file:src/frutas/durazno.png", "file:src/frutas/manzana.png",
 			"file:src/frutas/naranja.jpg", "file:src/frutas/pera.png"};
-	
-	private static final HashMap<String, HashMap<String, String>> map = Methods.getMapWithTime();
 	
 	private static ImageView imagedurazno;
 	private static ImageView imagemanzana;
@@ -74,18 +69,10 @@ public class Fruits {
 				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando durazno");
-				try {
-					int value = Integer.parseInt(map.get("frutas").get("durazno"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
 			
 			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
+				
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
@@ -94,19 +81,7 @@ public class Fruits {
 				parcela.setCosechar(false);
 				parcela.setOcupado(true);
 				System.out.println("Ingresando manzana");
-				try {
-					int value = Integer.parseInt(map.get("frutas").get("manzana"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagenaranja.setOnMouseClicked(e -> {
@@ -114,19 +89,7 @@ public class Fruits {
 				parcela.setOcupado(true);
 				parcela.setCosechar(false);
 				System.out.println("Ingresando naranja");
-				try {
-					int value = Integer.parseInt(map.get("frutas").get("naranja"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagepera.setOnMouseClicked(e -> {
@@ -134,19 +97,7 @@ public class Fruits {
 				parcela.setOcupado(true);
 				parcela.setCosechar(false);
 				System.out.println("Ingresando pera");
-				try {
-					int value = Integer.parseInt(map.get("frutas").get("pera"));
-					Thread.sleep(value * 1000);
-				} catch(Exception exception){
-					System.out.println(exception.getMessage());
-				}
-				parcela.setCosechar(true);
 			}else System.out.println("Parcela ocupada aun...");
-			
-			if(parcela.isCosechar()) {
-				parcela.setCosechar(false);
-				System.out.println("Cosechado..");
-			} else System.out.println("Aun no listo para cosechar");
 		});
 	}
 }
