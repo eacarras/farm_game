@@ -209,7 +209,6 @@ public class PrincipalGame extends Application{
 			if(data.getDescripcion().equals("Monedas")) {
 				if(Integer.parseInt(data.getData()) >= 15) {
 					data.setData(String.valueOf(Integer.parseInt(data.getData()) - 15));
-					create_table();
 					return true;
 				}
 			}

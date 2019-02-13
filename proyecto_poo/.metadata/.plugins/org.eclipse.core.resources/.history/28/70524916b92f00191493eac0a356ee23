@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 public class Fruits {
 	
 	private static final String[] paths= {"file:src/frutas/durazno.png", "file:src/frutas/manzana.png",
-			"file:src/frutas/naranja.jpg", "file:src/frutas/pera.png"};
+			"file:src/frutas/naranja.jpg", "file:src/frutas/pera.jpg"};
 	
 	public static HBox getFruits() {
 		HBox hfruits = new HBox();
@@ -34,7 +34,7 @@ public class Fruits {
 					imagenaranja.setFitHeight(70.0);
 					hfruits.getChildren().add(imagenaranja);
 					break;
-				case "file:src/frutas/pera.png":
+				case "file:src/frutas/pera.jpg":
 					ImageView imagepera = new ImageView(new Image(path));
 					imagepera.setFitWidth(70.0);
 					imagepera.setFitHeight(70.0);

@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 public class Fruits {
 	
 	private static final String[] paths= {"file:src/frutas/durazno.png", "file:src/frutas/manzana.png",
-			"file:src/frutas/naranja.jpg", "file:src/frutas/pera.png"};
+			"file:src/frutas/naranja.jpg", "file:src/frutas/pera.jpg"};
 	
 	public static HBox getFruits() {
 		HBox hfruits = new HBox();

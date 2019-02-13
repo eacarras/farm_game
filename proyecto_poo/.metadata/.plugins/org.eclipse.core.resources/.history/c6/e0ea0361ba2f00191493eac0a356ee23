@@ -94,7 +94,7 @@ public class Methods {
 	public static List<TableData> getListValues() {
 		List<TableData> array = new ArrayList<>();
 		for(String value: descripciones)
-			if(value.equals("Monedas")) array.add(new TableData(value, "65"));
+			if(value.equals("Monedas")) array.add(new TableData(value, "50"));
 			else array.add(new TableData(value, "0"));
 		return array;
 	}

@@ -175,18 +175,16 @@ public class PrincipalGame extends Application{
 	}
 	
 	private void setParcelas() {
-		if(canAddParcela()) {
-			try {
-				root.getChildren().remove(hparcelas);
-			} catch(Exception e){
-				System.out.println("Aun no hay parcelas..");
-			}
-			hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
-			
-			root.getChildren().addAll(hparcelas);
-			AnchorPane.setLeftAnchor(hparcelas, 100.0);
-			AnchorPane.setTopAnchor(hparcelas, 360.0);
+		try {
+			root.getChildren().remove(hparcelas);
+		} catch(Exception e){
+			System.out.println("Aun no hay parcelas..");
 		}
+		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+		
+		root.getChildren().addAll(hparcelas);
+		AnchorPane.setLeftAnchor(hparcelas, 100.0);
+		AnchorPane.setTopAnchor(hparcelas, 360.0);
 	}
 	
 	private void setButtonParcela() {
@@ -202,19 +200,6 @@ public class PrincipalGame extends Application{
 		
 		AnchorPane.setRightAnchor(baddparcela, 10.0);
 		AnchorPane.setBottomAnchor(baddparcela, 40.0);
-	}
-	
-	private boolean canAddParcela() {
-		for(TableData data: list) {
-			if(data.getDescripcion().equals("Monedas")) {
-				if(Integer.parseInt(data.getData()) >= 15) {
-					data.setData(String.valueOf(Integer.parseInt(data.getData()) - 15));
-					create_table();
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 	
 	// Getter and setter 
