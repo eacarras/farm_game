@@ -13,6 +13,8 @@ public class Values {
 	public final static String TITLE_LOGIN = "Pagina Principal";
 	public final static String TITLE_GAME = "Diviertete jugando !!";
 	public final static String MESSAGE_ERROR_LOGIN = "Por favor ingrese su nombre para continuar..";
+	public final static String MESSAGE_ERROR_GAME = "Ingrese todos los valores para continuar..";
+	public final static String MESSAGE_GAME = "Seleccione el cultivo que desee sembrar:";
 	
 	public final static int MAX_LENGTH = 3;
 }

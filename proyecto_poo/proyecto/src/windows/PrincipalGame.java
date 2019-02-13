@@ -8,6 +8,7 @@ import granos.Granos;
 import vegetal.Vegetales;
 
 import classes.TableData;
+import classes.Moneda;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +17,8 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import javafx.scene.paint.Color;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,10 +41,14 @@ public class PrincipalGame extends Application{
 	private Label cluster;
 	private Button complete_pedido;
 	private int pedido;
+	private int initial_value;
+	private int diference;
 	
 	private Label loptions;
+	private Label lerror;
 	
 	private final List<TableData> list = Methods.getListValues();
+	private Moneda monedas;
 	
 	private final HBox frutas = Fruits.getFruits();
 	private final HBox granos = Granos.getGranos();
@@ -52,8 +59,17 @@ public class PrincipalGame extends Application{
 	public PrincipalGame(String user) {
 		root = new AnchorPane();
 		setPedido(1);
+		monedas = new Moneda(50);
+		initial_value = 50;
+		
+		lerror = new Label(Values.MESSAGE_ERROR_GAME);
+		lerror.setTextFill(Color.RED);
+		lerror.setVisible(false);
+		AnchorPane.setLeftAnchor(lerror, 300.0);
+		AnchorPane.setTopAnchor(lerror, 495.0);
 		
 		complete_pedido = new Button("Completar Pedido");
+		setActionOfButton();
 		AnchorPane.setRightAnchor(complete_pedido, 10.0);
 		AnchorPane.setBottomAnchor(complete_pedido, 10.0);
 		
@@ -61,7 +77,7 @@ public class PrincipalGame extends Application{
 		AnchorPane.setLeftAnchor(luser, 10.0);
 		AnchorPane.setTopAnchor(luser, 10.0);
 		
-		loptions = new Label("Seleccione el cultivo que desee sembrar:");
+		loptions = new Label(Values.MESSAGE_GAME);
 		AnchorPane.setLeftAnchor(loptions, 10.0);
 		AnchorPane.setTopAnchor(loptions, 495.0);
 		
@@ -78,7 +94,7 @@ public class PrincipalGame extends Application{
 	@Override
 	public void start(Stage stage) {
 		
-		root.getChildren().addAll(luser, background, loptions, complete_pedido);
+		root.getChildren().addAll(luser, background, loptions, complete_pedido, lerror);
 		
 		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
 		stage.setScene(scene);
@@ -124,13 +140,26 @@ public class PrincipalGame extends Application{
 	}
 	
 	private void create_pedido() {
-		cluster = Methods.getPedido(String.valueOf(pedido));
+		cluster = Methods.getPedido(String.valueOf(pedido)).get(0);
+		diference = Integer.parseInt(Methods.getPedido(String.valueOf(pedido)).get(1).getText());
 		
 		root.getChildren().add(cluster);
 		AnchorPane.setLeftAnchor(cluster, 630.0);
 		AnchorPane.setTopAnchor(cluster, 125.0);
 	}
 	
+	private void setActionOfButton() {
+		complete_pedido.setOnAction(e -> {
+			if(monedas.getValor_total() - initial_value == diference) {
+				cluster.setText("");
+				setPedido(pedido + 1);
+				create_pedido();
+				initial_value = monedas.getValor_total();
+			} else lerror.setVisible(true);		
+		});
+	}
+	
+	// Getter and setter 
 	private void setPedido(int pedido) {
 		this.pedido = pedido;
 	}

@@ -87,15 +87,18 @@ public class Methods {
 	public static List<TableData> getListValues() {
 		List<TableData> array = new ArrayList<>();
 		for(String value: descripciones)
-			array.add(new TableData(value, "0"));
+			if(value.equals("Monedas")) array.add(new TableData(value, "50"));
+			else array.add(new TableData(value, "0"));
 		return array;
 	}
 	
-	public static Label getPedido(String numero_pedido) {
+	public static List<Label> getPedido(String numero_pedido) {
 		int numero_fruta;
 		int specific_number;
 		int recompensa_total = 0;
 		List<String> list = new ArrayList<>();
+		
+		List<Label> labels = new ArrayList<>();
 
 		for(int i = 0; i < Values.MAX_LENGTH; i ++) {
 			numero_fruta = (int) (Math.random() * 2);
@@ -117,6 +120,9 @@ public class Methods {
 		}
 		
 		ClusterPedido cluster = new ClusterPedido(numero_pedido, list, String.valueOf(recompensa_total));
-		return cluster.getCluster();
+		labels.add(cluster.getCluster());
+		labels.add(new Label(String.valueOf(recompensa_total)));
+		
+		return labels;
 	}
 }

@@ -9,4 +9,6 @@
 <fullyQualifiedTypeName name="granos.Granos"/>
 <fullyQualifiedTypeName name="vegetal.Vegetales"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
+<fullyQualifiedTypeName name="classes.TableData"/>
+<fullyQualifiedTypeName name="classes.ClusterPedido"/>
 </qualifiedTypeNameHistroy>
