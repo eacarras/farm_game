@@ -8,7 +8,6 @@ import granos.Granos;
 import vegetal.Vegetales;
 
 import classes.TableData;
-import classes.Parcela;
 import classes.Moneda;
 
 import java.util.List;
@@ -48,9 +47,6 @@ public class PrincipalGame extends Application{
 	private HBox hparcelas;
 	private Button baddparcela;
 	private int value_of_parcelas;
-	private final Parcela pfrutas = new Parcela();
-	private final Parcela pvegetales = new Parcela();
-	private final Parcela pgranos = new Parcela();
 	
 	private Label loptions;
 	private Label lerror;

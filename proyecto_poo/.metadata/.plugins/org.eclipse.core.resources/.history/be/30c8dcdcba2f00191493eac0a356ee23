@@ -1,0 +1,14 @@
+package classes;
+
+public class Parcela {
+	
+	private boolean ocupado;
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+}
