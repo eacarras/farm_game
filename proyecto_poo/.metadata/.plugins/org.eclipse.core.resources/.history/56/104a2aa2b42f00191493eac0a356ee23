@@ -4,7 +4,7 @@ public class Values {
 	
 	public final static double SPACING_BUTTON_LOGIN = 50.0;
 	public final static double SPACING_INFO_LOGIN = 10.0;
-	public final static double SPACING_PARCELA = 30.0;
+	public final static double SPACING_PARCELA = 20.0;
 	public final static double WIDTH_LOGIN = 900.0;
 	public final static double HEIGTH_LOGIN = 600.0;
 	public final static double WIDTH_GAME = 850.0;
@@ -15,11 +15,10 @@ public class Values {
 	public final static String TITLE_GAME = "Diviertete jugando !!";
 	public final static String MESSAGE_ERROR_LOGIN = "Por favor ingrese su nombre para continuar..";
 	public final static String MESSAGE_ERROR_GAME = "Ingrese todos los valores para continuar..";
-	public final static String MESSAGE_ERROR_PARCELA = "Usted tiene todas las parcelas posibles..";
 	public final static String MESSAGE_GAME = "Seleccione el cultivo que desee sembrar:";
 	
 	public final static int MAX_LENGTH = 3;
 	public final static int MAX_NUMBER_OF_PARCELAS = 3;
-	public final static double WIDTH_OF_PARCELAS = 120.0;
-	public final static double HEIGTH_OF_PARCELAS = 80.0;
+	public final static double WIDTH_OF_PARCELAS = 25.0;
+	public final static double HEIGTH_OF_PARCELAS = 10.0;
 }

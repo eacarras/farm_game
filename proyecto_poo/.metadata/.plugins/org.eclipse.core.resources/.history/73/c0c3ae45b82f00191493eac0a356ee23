@@ -135,9 +135,6 @@ public class Methods {
 	
 	public static HBox getParcelas(int value, HBox hfrutas, HBox hvegetales, HBox hgranos) {
 		HBox hparcela = new HBox();
-		ImageView parcela_frutas = null;
-		ImageView parcela_vegetales = null;
-		ImageView parcela_granos = null;
 		
 		hparcela.setSpacing(Values.SPACING_PARCELA);
 		
@@ -145,14 +142,14 @@ public class Methods {
 			
 			switch(fruits_vegetal_cereal[i]) {
 			case "frutas":
-				parcela_frutas = new ImageView(new Image(path_parcela));
+				ImageView parcela_frutas = new ImageView(new Image(path_parcela));
 				parcela_frutas.setFitWidth(Values.WIDTH_OF_PARCELAS);
 				parcela_frutas.setFitHeight(Values.HEIGTH_OF_PARCELAS);
 				parcela_frutas.setAccessibleText("Frutas");
 				hparcela.getChildren().add(parcela_frutas);
 				break;
 			case "vegetales":
-				parcela_vegetales = new ImageView(new Image(path_parcela));
+				ImageView parcela_vegetales = new ImageView(new Image(path_parcela));
 				parcela_vegetales.setFitWidth(Values.WIDTH_OF_PARCELAS);
 				parcela_vegetales.setFitHeight(Values.HEIGTH_OF_PARCELAS);
 				parcela_vegetales.setAccessibleText("Vegetales");
@@ -162,7 +159,7 @@ public class Methods {
 				hparcela.getChildren().add(parcela_vegetales);
 				break;
 			case "granos":
-				parcela_granos = new ImageView(new Image(path_parcela));
+				ImageView parcela_granos = new ImageView(new Image(path_parcela));
 				parcela_granos.setFitWidth(Values.WIDTH_OF_PARCELAS);
 				parcela_granos.setFitHeight(Values.HEIGTH_OF_PARCELAS);
 				parcela_granos.setAccessibleText("Granos");
@@ -174,29 +171,8 @@ public class Methods {
 			}
 		}
 		
-		setActions(parcela_frutas, hfrutas, parcela_vegetales, hvegetales, parcela_granos, hgranos);
+		setActions();
 		
 		return hparcela;
-	}
-	
-	private static void setActions(ImageView frutas, HBox hfrutas, ImageView vegetales, HBox hvegetales,
-			ImageView granos, HBox hgranos) {
-		frutas.setOnMouseClicked(e -> {
-			hfrutas.setVisible(true);
-			hvegetales.setVisible(false);
-			hgranos.setVisible(false);
-		});
-		
-		vegetales.setOnMouseClicked(e -> {
-			hfrutas.setVisible(false);
-			hvegetales.setVisible(true);
-			hgranos.setVisible(false);			
-		});
-		
-		granos.setOnMouseClicked(e -> {
-			hfrutas.setVisible(false);
-			hvegetales.setVisible(false);
-			hgranos.setVisible(true);
-		});
 	}
 }

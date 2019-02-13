@@ -97,7 +97,7 @@ public class PrincipalGame extends Application{
 		value_of_parcelas = 1;
 		baddparcela = new Button("Agregar Parcela");
 		setButtonParcela();
-		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+		hparcelas = Methods.getParcelas(value_of_parcelas);
 	}
 	
 	@Override
@@ -180,7 +180,7 @@ public class PrincipalGame extends Application{
 		} catch(Exception e){
 			System.out.println("Aun no hay parcelas..");
 		}
-		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+		hparcelas = Methods.getParcelas(value_of_parcelas);
 		
 		root.getChildren().addAll(hparcelas);
 		AnchorPane.setLeftAnchor(hparcelas, 100.0);
@@ -189,7 +189,7 @@ public class PrincipalGame extends Application{
 	
 	private void setButtonParcela() {
 		baddparcela.setOnAction(e -> {
-			if(value_of_parcelas < Values.MAX_NUMBER_OF_PARCELAS) {
+			if(value_of_parcelas <= Values.MAX_NUMBER_OF_PARCELAS) {
 				value_of_parcelas = value_of_parcelas + 1;
 				setParcelas();
 			} else {

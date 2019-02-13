@@ -135,9 +135,9 @@ public class Methods {
 	
 	public static HBox getParcelas(int value, HBox hfrutas, HBox hvegetales, HBox hgranos) {
 		HBox hparcela = new HBox();
-		ImageView parcela_frutas = null;
-		ImageView parcela_vegetales = null;
-		ImageView parcela_granos = null;
+		ImageView parcela_frutas;
+		ImageView parcela_vegetales;
+		ImageView parcela_granos;
 		
 		hparcela.setSpacing(Values.SPACING_PARCELA);
 		
@@ -179,24 +179,8 @@ public class Methods {
 		return hparcela;
 	}
 	
-	private static void setActions(ImageView frutas, HBox hfrutas, ImageView vegetales, HBox hvegetales,
+	private void setAction(ImageView frutas, HBox hfrutas, ImageView vegetales, HBox hvegetales,
 			ImageView granos, HBox hgranos) {
-		frutas.setOnMouseClicked(e -> {
-			hfrutas.setVisible(true);
-			hvegetales.setVisible(false);
-			hgranos.setVisible(false);
-		});
 		
-		vegetales.setOnMouseClicked(e -> {
-			hfrutas.setVisible(false);
-			hvegetales.setVisible(true);
-			hgranos.setVisible(false);			
-		});
-		
-		granos.setOnMouseClicked(e -> {
-			hfrutas.setVisible(false);
-			hvegetales.setVisible(false);
-			hgranos.setVisible(true);
-		});
 	}
 }

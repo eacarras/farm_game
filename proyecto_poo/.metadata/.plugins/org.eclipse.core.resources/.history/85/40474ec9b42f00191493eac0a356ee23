@@ -44,9 +44,7 @@ public class PrincipalGame extends Application{
 	private int initial_value;
 	private int diference;
 	
-	private HBox hparcelas;
-	private Button baddparcela;
-	private int value_of_parcelas;
+	private final HBox hparcelas = Methods.getParcelas();
 	
 	private Label loptions;
 	private Label lerror;
@@ -66,7 +64,7 @@ public class PrincipalGame extends Application{
 		monedas = new Moneda(50);
 		initial_value = 50;
 		
-		lerror = new Label();
+		lerror = new Label(Values.MESSAGE_ERROR_GAME);
 		lerror.setTextFill(Color.RED);
 		lerror.setVisible(false);
 		AnchorPane.setLeftAnchor(lerror, 300.0);
@@ -93,20 +91,13 @@ public class PrincipalGame extends Application{
 		
 		create_table();
 		create_pedido();
-		
-		value_of_parcelas = 1;
-		baddparcela = new Button("Agregar Parcela");
-		setButtonParcela();
-		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+		setParcelas();
 	}
 	
 	@Override
 	public void start(Stage stage) {
 		
-		root.getChildren().addAll(luser, background, loptions, complete_pedido, lerror, hparcelas,
-				baddparcela);
-		
-		setParcelas();
+		root.getChildren().addAll(luser, background, loptions, complete_pedido, lerror, hparcelas);
 		
 		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
 		stage.setScene(scene);
@@ -167,39 +158,14 @@ public class PrincipalGame extends Application{
 				setPedido(pedido + 1);
 				create_pedido();
 				initial_value = monedas.getValor_total();
-			} else {
-				lerror.setText(Values.MESSAGE_ERROR_GAME);
-				lerror.setVisible(true);		
-			}
+			} else lerror.setVisible(true);		
 		});
 	}
 	
 	private void setParcelas() {
-		try {
-			root.getChildren().remove(hparcelas);
-		} catch(Exception e){
-			System.out.println("Aun no hay parcelas..");
-		}
-		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+		AnchorPane.setLeftAnchor(hparcelas, 50.0);
+		AnchorPane.setTopAnchor(hparcelas, 300.0);
 		
-		root.getChildren().addAll(hparcelas);
-		AnchorPane.setLeftAnchor(hparcelas, 100.0);
-		AnchorPane.setTopAnchor(hparcelas, 360.0);
-	}
-	
-	private void setButtonParcela() {
-		baddparcela.setOnAction(e -> {
-			if(value_of_parcelas < Values.MAX_NUMBER_OF_PARCELAS) {
-				value_of_parcelas = value_of_parcelas + 1;
-				setParcelas();
-			} else {
-				lerror.setText(Values.MESSAGE_ERROR_PARCELA);
-				lerror.setVisible(true);
-			}
-		});
-		
-		AnchorPane.setRightAnchor(baddparcela, 10.0);
-		AnchorPane.setBottomAnchor(baddparcela, 40.0);
 	}
 	
 	// Getter and setter 
