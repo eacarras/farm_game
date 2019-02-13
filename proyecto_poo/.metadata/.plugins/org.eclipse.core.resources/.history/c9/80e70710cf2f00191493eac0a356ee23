@@ -65,28 +65,28 @@ public class Vegetales {
 	
 	private static void setButtonActions() {
 		imagebrocoli.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando brocoli");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagelechuga.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando lechuga");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagepimiento.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando pimiento");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagetomate.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando tomate");
 			}else System.out.println("Parcela ocupada aun...");

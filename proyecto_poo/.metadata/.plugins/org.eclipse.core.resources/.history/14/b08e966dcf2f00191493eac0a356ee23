@@ -58,15 +58,12 @@ public class PrincipalGame extends Application{
 	private final List<TableData> list = Methods.getListValues();
 	private Moneda monedas;
 	
-	@SuppressWarnings("unused")
 	private final Fruits fruits = new Fruits(pfrutas);
 	private final HBox frutas = Fruits.getFruits();
 	
-	@SuppressWarnings("unused")
 	private final Granos cereal = new Granos(pgranos);
 	private final HBox granos = Granos.getGranos();
 	
-	@SuppressWarnings("unused")
 	private final Vegetales vegetal = new Vegetales(pvegetales);
 	private final HBox vegetales = Vegetales.getVegetales();
 	
@@ -194,20 +191,18 @@ public class PrincipalGame extends Application{
 				System.out.println("Aun no hay parcelas..");
 			}
 			
-			System.out.println(value_of_parcelas);
-			
 			if(value_of_parcelas == 1) {
 				pfrutas.setAvalible(true);
 				pvegetales.setAvalible(false);
-				pgranos.setAvalible(false);
+				pvegetales.setAvalible(false);
 			} else if(value_of_parcelas == 2) {
 				pfrutas.setAvalible(true);
 				pvegetales.setAvalible(true);
-				pgranos.setAvalible(false);
+				pvegetales.setAvalible(false);
 			} else {
-				pfrutas.setAvalible(true);
-				pvegetales.setAvalible(true);
-				pgranos.setAvalible(true);
+					pfrutas.setAvalible(true);
+					pvegetales.setAvalible(true);
+					pvegetales.setAvalible(true);
 			}
 			
 			hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);

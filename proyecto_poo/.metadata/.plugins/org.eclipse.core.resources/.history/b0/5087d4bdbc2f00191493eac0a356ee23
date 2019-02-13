@@ -3,8 +3,6 @@ package vegetal;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import classes.Parcela;
-
 import javafx.scene.layout.HBox;
 
 public class Vegetales {
@@ -16,12 +14,6 @@ public class Vegetales {
 	private static ImageView imagelechuga;
 	private static ImageView imagepimiento;
 	private static ImageView imagetomate;
-	
-	private static Parcela parcela;
-	
-	public Vegetales(Parcela parcela_vegetal) {
-		parcela = parcela_vegetal;
-	}
 	
 	public static HBox getVegetales() {
 		HBox hvegetales = new HBox();
@@ -58,38 +50,6 @@ public class Vegetales {
 			}
 		}
 		
-		setButtonActions();
-		
 		return hvegetales;
-	}
-	
-	private static void setButtonActions() {
-		imagebrocoli.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando brocoli");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagelechuga.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando lechuga");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagepimiento.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando pimiento");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagetomate.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando tomate");
-			}else System.out.println("Parcela ocupada aun...");
-		});
 	}
 }

@@ -43,9 +43,9 @@ public class Granos {
 	
 	private static void setButtonActions() {
 		imagetrigo.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
-				System.out.println("Ingresando trigo");
+				System.out.println("Ingresando pera");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 	}

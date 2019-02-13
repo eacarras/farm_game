@@ -15,10 +15,6 @@ public class Granos {
 	
 	private static Parcela parcela;
 	
-	public Granos(Parcela parcela_grano) {
-		parcela = parcela_grano;
-	}
-	
 	public static HBox getGranos() {
 		HBox hgranos = new HBox();
 		hgranos.setSpacing(10.0);
@@ -36,17 +32,10 @@ public class Granos {
 			}
 		}
 		
-		setButtonActions();
-		
 		return hgranos;
 	}
 	
-	private static void setButtonActions() {
-		imagetrigo.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando trigo");
-			}else System.out.println("Parcela ocupada aun...");
-		});
+	public static void setParcela(Parcela parcela_granos) {
+		parcela = parcela_granos;
 	}
 }

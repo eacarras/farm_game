@@ -65,28 +65,28 @@ public class Fruits {
 	
 	private static void setButtonAction() {
 		imagedurazno.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando durazno");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagemanzana.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando manzana");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagenaranja.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando naranja");
 			}else System.out.println("Parcela ocupada aun...");
 		});
 		
 		imagepera.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setOcupado(true);
 				System.out.println("Ingresando pera");
 			}else System.out.println("Parcela ocupada aun...");

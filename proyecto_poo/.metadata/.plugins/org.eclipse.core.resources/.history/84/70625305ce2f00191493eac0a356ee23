@@ -17,10 +17,10 @@ public class Vegetales {
 	private static ImageView imagepimiento;
 	private static ImageView imagetomate;
 	
-	private static Parcela parcela;
+	private Parcela parcela;
 	
-	public Vegetales(Parcela parcela_vegetal) {
-		parcela = parcela_vegetal;
+	public Vegetales(Parcela parcela) {
+		this.parcela = parcela;
 	}
 	
 	public static HBox getVegetales() {
@@ -58,38 +58,6 @@ public class Vegetales {
 			}
 		}
 		
-		setButtonActions();
-		
 		return hvegetales;
-	}
-	
-	private static void setButtonActions() {
-		imagebrocoli.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando brocoli");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagelechuga.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando lechuga");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagepimiento.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando pimiento");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagetomate.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando tomate");
-			}else System.out.println("Parcela ocupada aun...");
-		});
 	}
 }

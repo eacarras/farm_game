@@ -1,5 +1,5 @@
 package frutas;
-// servicio
+
 import javafx.scene.layout.HBox;
 
 import classes.Parcela;
@@ -18,10 +18,6 @@ public class Fruits {
 	private static ImageView imagepera;
 	
 	private static Parcela parcela;
-	
-	public Fruits(Parcela parcela_fruta) {
-		parcela = parcela_fruta;
-	}
 	
 	public static HBox getFruits() {
 		HBox hfruits = new HBox();
@@ -58,38 +54,7 @@ public class Fruits {
 			}
 		}
 		
-		setButtonAction();
-		
 		return hfruits;
 	}
 	
-	private static void setButtonAction() {
-		imagedurazno.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando durazno");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagemanzana.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando manzana");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagenaranja.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando naranja");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-		
-		imagepera.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando pera");
-			}else System.out.println("Parcela ocupada aun...");
-		});
-	}
 }

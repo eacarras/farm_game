@@ -58,15 +58,12 @@ public class PrincipalGame extends Application{
 	private final List<TableData> list = Methods.getListValues();
 	private Moneda monedas;
 	
-	@SuppressWarnings("unused")
 	private final Fruits fruits = new Fruits(pfrutas);
 	private final HBox frutas = Fruits.getFruits();
 	
-	@SuppressWarnings("unused")
 	private final Granos cereal = new Granos(pgranos);
 	private final HBox granos = Granos.getGranos();
 	
-	@SuppressWarnings("unused")
 	private final Vegetales vegetal = new Vegetales(pvegetales);
 	private final HBox vegetales = Vegetales.getVegetales();
 	

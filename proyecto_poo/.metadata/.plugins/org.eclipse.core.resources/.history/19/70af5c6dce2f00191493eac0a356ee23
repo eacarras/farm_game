@@ -36,17 +36,6 @@ public class Granos {
 			}
 		}
 		
-		setButtonActions();
-		
 		return hgranos;
-	}
-	
-	private static void setButtonActions() {
-		imagetrigo.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
-				System.out.println("Ingresando trigo");
-			}else System.out.println("Parcela ocupada aun...");
-		});
 	}
 }
