@@ -1,0 +1,264 @@
+package windows;
+
+import res.Methods;
+import res.Values;
+
+import frutas.Fruits;
+import granos.Granos;
+import vegetal.Vegetales;
+
+import classes.TableData;
+import classes.Parcela;
+import classes.Moneda;
+
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import javafx.scene.paint.Color;
+
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+
+public class PrincipalGame extends Application{
+	// TODO: REFRESH THE LABEL IN ORDER TO COMPLETE THE ORDER
+	private AnchorPane root;
+	private Label luser;
+	
+	private Label cluster;
+	private Button complete_pedido;
+	private int pedido;
+	
+	@SuppressWarnings("unused")
+	private int initial_value;
+	@SuppressWarnings("unused")
+	private int diference;
+	
+	private HBox hparcelas;
+	private Button baddparcela;
+	private int value_of_parcelas;
+	private final Parcela pfrutas = new Parcela();
+	private final Parcela pvegetales = new Parcela();
+	private final Parcela pgranos = new Parcela();
+	
+	private Label loptions;
+	private Label lerror;
+	
+	private final List<TableData> list = Methods.getListValues();
+	private Moneda monedas;
+	
+	@SuppressWarnings("unused")
+	private Fruits fruits;
+	private final HBox frutas = Fruits.getFruits();
+	
+	@SuppressWarnings("unused")
+	private Granos cereal;
+	private final HBox granos = Granos.getGranos();
+	
+	@SuppressWarnings("unused")
+	private Vegetales vegetal;
+	private final HBox vegetales = Vegetales.getVegetales();
+	
+	private ImageView background;
+	
+	public PrincipalGame(String user) {
+		root = new AnchorPane();
+		setPedido(1);
+		generatedlabels();
+		monedas = new Moneda(50);
+		initial_value = 50;
+		
+		lerror = new Label();
+		lerror.setTextFill(Color.RED);
+		lerror.setVisible(false);
+		AnchorPane.setLeftAnchor(lerror, 300.0);
+		AnchorPane.setTopAnchor(lerror, 495.0);
+		
+		complete_pedido = new Button("Completar Pedido");
+		setActionOfButton();
+		AnchorPane.setRightAnchor(complete_pedido, 10.0);
+		AnchorPane.setBottomAnchor(complete_pedido, 10.0);
+		
+		luser = new Label(user);
+		AnchorPane.setLeftAnchor(luser, 10.0);
+		AnchorPane.setTopAnchor(luser, 10.0);
+		
+		loptions = new Label(Values.MESSAGE_GAME);
+		AnchorPane.setLeftAnchor(loptions, 10.0);
+		AnchorPane.setTopAnchor(loptions, 495.0);
+		
+		addHBox(frutas);
+		addHBox(granos);
+		addHBox(vegetales);
+		
+		background = new ImageView(new Image("file:src/res/fondo_granja.jpg"));
+		
+		create_table();
+		create_pedido();
+		
+		value_of_parcelas = 1;
+		baddparcela = new Button("Agregar Parcela");
+		setButtonParcela();
+		hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+	}
+	
+	@Override
+	public void start(Stage stage) {
+		
+		root.getChildren().addAll(luser, background, loptions, complete_pedido, lerror, hparcelas,
+				baddparcela);
+		
+		setParcelas();
+		
+		Scene scene = new Scene(root, Values.WIDTH_GAME, Values.HEIGTH_GAME);
+		stage.setScene(scene);
+		stage.setTitle(Values.TITLE_GAME);
+		stage.centerOnScreen();
+		stage.show();
+	}
+	
+	private void addHBox(HBox hbox) {
+		AnchorPane.setLeftAnchor(hbox, 10.0);
+		AnchorPane.setTopAnchor(hbox, 510.0);
+		
+		hbox.setVisible(false);
+		root.getChildren().add(hbox);
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void create_table() {
+		try {
+			TableView<TableData> tabla = new TableView<>();
+			AnchorPane.setTopAnchor(tabla, 5.0);
+			AnchorPane.setLeftAnchor(tabla, 630.0);
+			
+			tabla.setEditable(false);
+			tabla.setPrefHeight(80.0);
+			tabla.setPrefWidth(210.0);
+			
+			TableColumn<TableData, String> name = new TableColumn<>("Descripcion");
+	        TableColumn<TableData, String> fecha = new TableColumn<>("Data");	     
+	        
+	        tabla.getColumns().addAll(name, fecha);
+	        
+	        name.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+	        fecha.setCellValueFactory(new PropertyValueFactory<>("data"));
+	        
+	        for(TableData data: list)
+	        	tabla.getItems().add(data);
+	        
+	        root.getChildren().add(tabla);
+		} catch(Exception e) {
+			Logger.getLogger("Table").log(Level.SEVERE, null, e);
+		}
+	}
+	
+	private void create_pedido() {
+		List<Label> p = Methods.getPedido(String.valueOf(pedido));
+		
+		cluster = p.get(0);
+		diference = Integer.parseInt(p.get(1).getText());
+		
+		root.getChildren().add(cluster);
+		AnchorPane.setLeftAnchor(cluster, 630.0);
+		AnchorPane.setTopAnchor(cluster, 125.0);
+	}
+	
+	private void setActionOfButton() {
+		complete_pedido.setOnAction(e -> {
+			if(cluster.getText().toString().split("\n").length == 2) {
+				cluster.setText("");
+				setPedido(pedido + 1);
+				create_pedido();
+				generatedlabels();
+				initial_value = monedas.getValor_total();
+			} else {
+				lerror.setText(Values.MESSAGE_ERROR_GAME);
+				lerror.setVisible(true);		
+			}
+		});
+	}
+	
+	private void setParcelas() {
+		if(canAddParcela()) {
+			try {
+				root.getChildren().remove(hparcelas);
+			} catch(Exception e){
+				System.out.println("Aun no hay parcelas..");
+			}
+						
+			if(value_of_parcelas == 1) {
+				pfrutas.setAvalible(true);
+				pvegetales.setAvalible(false);
+				pgranos.setAvalible(false);
+			} else if(value_of_parcelas == 2) {
+				pfrutas.setAvalible(true);
+				pvegetales.setAvalible(true);
+				pgranos.setAvalible(false);
+			} else {
+				pfrutas.setAvalible(true);
+				pvegetales.setAvalible(true);
+				pgranos.setAvalible(true);
+			}
+			
+			hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
+			
+			root.getChildren().addAll(hparcelas);
+			AnchorPane.setLeftAnchor(hparcelas, 100.0);
+			AnchorPane.setTopAnchor(hparcelas, 360.0);
+		}
+	}
+	
+	private void setButtonParcela() {
+		baddparcela.setOnAction(e -> {
+			if(value_of_parcelas < Values.MAX_NUMBER_OF_PARCELAS) {
+				value_of_parcelas = value_of_parcelas + 1;
+				setParcelas();
+			} else {
+				lerror.setText(Values.MESSAGE_ERROR_PARCELA);
+				lerror.setVisible(true);
+			}
+		});
+		
+		AnchorPane.setRightAnchor(baddparcela, 10.0);
+		AnchorPane.setBottomAnchor(baddparcela, 40.0);
+	}
+	
+	private boolean canAddParcela() {
+		for(TableData data: list) {
+			if(data.getDescripcion().equals("Monedas")) {
+				if(Integer.parseInt(data.getData()) >= 15) {
+					data.setData(String.valueOf(Integer.parseInt(data.getData()) - 15));
+					create_table();
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private void generatedlabels() {
+		fruits = new Fruits(pfrutas, cluster);
+		cereal = new Granos(pgranos, cluster);
+		vegetal = new Vegetales(pvegetales, cluster);
+	}
+	
+	// Getter and setter 
+	private void setPedido(int pedido) {
+		this.pedido = pedido;
+	}
+}

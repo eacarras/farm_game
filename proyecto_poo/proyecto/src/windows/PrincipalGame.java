@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -35,14 +37,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
 public class PrincipalGame extends Application{
-	
+	// TODO: REFRESH THE LABEL IN ORDER TO COMPLETE THE ORDER
 	private AnchorPane root;
 	private Label luser;
 	
 	private Label cluster;
 	private Button complete_pedido;
 	private int pedido;
+	
+	@SuppressWarnings("unused")
 	private int initial_value;
+	@SuppressWarnings("unused")
 	private int diference;
 	
 	private HBox hparcelas;
@@ -59,15 +64,15 @@ public class PrincipalGame extends Application{
 	private Moneda monedas;
 	
 	@SuppressWarnings("unused")
-	private final Fruits fruits = new Fruits(pfrutas);
+	private Fruits fruits;
 	private final HBox frutas = Fruits.getFruits();
 	
 	@SuppressWarnings("unused")
-	private final Granos cereal = new Granos(pgranos);
+	private Granos cereal;
 	private final HBox granos = Granos.getGranos();
 	
 	@SuppressWarnings("unused")
-	private final Vegetales vegetal = new Vegetales(pvegetales);
+	private Vegetales vegetal;
 	private final HBox vegetales = Vegetales.getVegetales();
 	
 	private ImageView background;
@@ -105,6 +110,7 @@ public class PrincipalGame extends Application{
 		
 		create_table();
 		create_pedido();
+		generatedlabels();
 		
 		value_of_parcelas = 1;
 		baddparcela = new Button("Agregar Parcela");
@@ -176,11 +182,27 @@ public class PrincipalGame extends Application{
 	
 	private void setActionOfButton() {
 		complete_pedido.setOnAction(e -> {
-			if(monedas.getValor_total() - initial_value == diference) {
+			if(cluster.getText().toString().split("\n").length == 2) {
 				cluster.setText("");
 				setPedido(pedido + 1);
-				create_pedido();
-				initial_value = monedas.getValor_total();
+				if(pedido != Values.MAX_NUMBER_OF_PEDIDOS) {
+					create_pedido();
+					generatedlabels();
+					initial_value = monedas.getValor_total();
+					String[] sp = cluster.getText().toString().split("\n");
+					for(String string: sp) {
+						String[] split = string.split(" ");
+						if(split[0].equals("Recompensa:")) {
+							for(TableData data: list) {
+								if(data.getDescripcion().equals("Monedas")) {
+									data.setData(String.valueOf(Integer.parseInt(data.getData()) + 
+											Integer.parseInt(split[1])));
+									create_table();
+								}
+							}
+						}
+					}
+				}else lerror.setText("Juego Terminado");
 			} else {
 				lerror.setText(Values.MESSAGE_ERROR_GAME);
 				lerror.setVisible(true);		
@@ -195,9 +217,7 @@ public class PrincipalGame extends Application{
 			} catch(Exception e){
 				System.out.println("Aun no hay parcelas..");
 			}
-			
-			System.out.println(value_of_parcelas);
-			
+						
 			if(value_of_parcelas == 1) {
 				pfrutas.setAvalible(true);
 				pvegetales.setAvalible(false);
@@ -211,6 +231,8 @@ public class PrincipalGame extends Application{
 				pvegetales.setAvalible(true);
 				pgranos.setAvalible(true);
 			}
+			
+			generatedlabels();
 			
 			hparcelas = Methods.getParcelas(value_of_parcelas, frutas, vegetales, granos);
 			
@@ -246,6 +268,12 @@ public class PrincipalGame extends Application{
 			}
 		}
 		return false;
+	}
+	
+	private void generatedlabels() {
+		fruits = new Fruits(pfrutas, cluster);
+		cereal = new Granos(pgranos, cluster);
+		vegetal = new Vegetales(pvegetales, cluster);
 	}
 	
 	// Getter and setter 

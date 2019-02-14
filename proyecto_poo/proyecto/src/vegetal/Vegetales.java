@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 import javafx.scene.layout.HBox;
 
+import javafx.scene.control.Label;
+
 public class Vegetales {
 
 	private static final String[] paths= {"file:src/vegetal/brocoli.png", "file:src/vegetal/lechuga.png",
@@ -23,9 +25,11 @@ public class Vegetales {
 	private static ImageView imagetomate;
 	
 	private static Parcela parcela;
+	private static Label label;
 	
-	public Vegetales(Parcela parcela_vegetal) {
+	public Vegetales(Parcela parcela_vegetal, Label lcluster) {
 		parcela = parcela_vegetal;
+		label = lcluster;
 	}
 	
 	public static HBox getVegetales() {
@@ -70,9 +74,8 @@ public class Vegetales {
 	
 	private static void setButtonActions() {
 		imagebrocoli.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando brocoli");
 				try {
 					int value = Integer.parseInt(map.get("vegetales").get("brocoli"));
@@ -86,13 +89,21 @@ public class Vegetales {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("brocoli")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagelechuga.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando lechuga");
 				try {
 					int value = Integer.parseInt(map.get("vegetales").get("lechuga"));
@@ -106,13 +117,21 @@ public class Vegetales {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("lechuga")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagepimiento.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando pimiento");
 				try {
 					int value = Integer.parseInt(map.get("vegetales").get("pimiento"));
@@ -126,13 +145,21 @@ public class Vegetales {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("pimiento")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagetomate.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando tomate");
 				try {
 					int value = Integer.parseInt(map.get("vegetales").get("tomate"));
@@ -146,6 +173,15 @@ public class Vegetales {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("tomate")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 	}

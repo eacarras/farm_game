@@ -1,11 +1,13 @@
 package frutas;
-// servicio
+
 import javafx.scene.layout.HBox;
 
 import classes.Parcela;
 import res.Methods;
 
 import java.util.HashMap;
+
+import javafx.scene.control.Label;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,9 +25,11 @@ public class Fruits {
 	private static ImageView imagepera;
 	
 	private static Parcela parcela;
+	private static Label label;
 	
-	public Fruits(Parcela parcela_fruta) {
+	public Fruits(Parcela parcela_fruta, Label lcluster) {
 		parcela = parcela_fruta;
+		label = lcluster;
 	}
 	
 	public static HBox getFruits() {
@@ -70,9 +74,8 @@ public class Fruits {
 	
 	private static void setButtonAction() {
 		imagedurazno.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando durazno");
 				try {
 					int value = Integer.parseInt(map.get("frutas").get("durazno"));
@@ -86,13 +89,21 @@ public class Fruits {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("durazno")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagemanzana.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
-				parcela.setOcupado(true);
 				System.out.println("Ingresando manzana");
 				try {
 					int value = Integer.parseInt(map.get("frutas").get("manzana"));
@@ -106,12 +117,20 @@ public class Fruits {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("manzana")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagenaranja.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
 				System.out.println("Ingresando naranja");
 				try {
@@ -126,12 +145,20 @@ public class Fruits {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("naranja")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 		
 		imagepera.setOnMouseClicked(e -> {
-			if(!parcela.isOcupado() || !parcela.isAvalible()) {
-				parcela.setOcupado(true);
+			if(!parcela.isOcupado()) {
 				parcela.setCosechar(false);
 				System.out.println("Ingresando pera");
 				try {
@@ -146,6 +173,15 @@ public class Fruits {
 			if(parcela.isCosechar()) {
 				parcela.setCosechar(false);
 				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("pera")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
 			} else System.out.println("Aun no listo para cosechar");
 		});
 	}

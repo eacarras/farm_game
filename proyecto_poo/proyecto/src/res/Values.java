@@ -21,6 +21,7 @@ public class Values {
 	public final static int MAX_LENGTH = 3;
 	public final static int MAX_NUMBER_OF_PARCELAS = 3;
 	public final static double WIDTH_OF_PARCELAS = 120.0;
+	public final static int MAX_NUMBER_OF_PEDIDOS = 1;
 	public final static double HEIGTH_OF_PARCELAS = 80.0;
 	public final static int COST_OF_PARCELAS = 15;
 }

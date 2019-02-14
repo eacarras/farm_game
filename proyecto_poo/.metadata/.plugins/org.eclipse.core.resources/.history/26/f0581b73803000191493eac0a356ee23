@@ -1,0 +1,83 @@
+package granos;
+
+import javafx.scene.layout.HBox;
+
+import classes.Parcela;
+import res.Methods;
+
+import java.util.HashMap;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import javafx.scene.control.Label;
+
+public class Granos {
+	
+	private static final String[] paths= {"file:src/granos/trigo.png"};
+	
+	private static final HashMap<String, HashMap<String, String>> map = Methods.getMapWithTime();
+	
+	private static ImageView imagetrigo;
+	
+	private static Parcela parcela;
+	private static Label label;
+	
+	public Granos(Parcela parcela_grano, Label lcluster) {
+		parcela = parcela_grano;
+		label = lcluster;
+	}
+	
+	public static HBox getGranos() {
+		HBox hgranos = new HBox();
+		hgranos.setSpacing(10.0);
+		
+		for (String path: paths) {
+			switch(path) {
+				case "file:src/granos/trigo.png":
+					imagetrigo = new ImageView(new Image(path));
+					imagetrigo.setFitHeight(70.0);
+					imagetrigo.setFitWidth(70.0);
+					hgranos.getChildren().add(imagetrigo);
+					break;
+				default:
+					break;
+			}
+		}
+		
+		setButtonActions();
+		
+		return hgranos;
+	}
+	
+	private static void setButtonActions() {
+		imagetrigo.setOnMouseClicked(e -> {
+			if(!parcela.isOcupado()) {
+				parcela.setCosechar(false);
+				parcela.setOcupado(true);
+				System.out.println("Ingresando trigo");
+				try {
+					int value = Integer.parseInt(map.get("granos").get("trigo"));
+					Thread.sleep(value * 1000);
+				} catch(Exception exception){
+					System.out.println(exception.getMessage());
+				}
+				parcela.setCosechar(true);
+			}else System.out.println("Parcela ocupada aun...");
+			
+			if(parcela.isCosechar()) {
+				parcela.setCosechar(false);
+				System.out.println("Cosechado..");
+				String[] sp = label.getText().split("\n");
+				StringBuilder sb = new StringBuilder();
+				for(String pedido: sp) {
+					String[] split = pedido.split(" ");
+					if(!split[1].equals("trigo")) {
+						sb.append(pedido + "\n");
+					}
+				}
+				label.setText(sb.toString());
+			} else System.out.println("Aun no listo para cosechar");
+		});
+	}
+}
